@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const modalContent = document.querySelector(".content");
+const form = document.querySelector("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,3 +32,9 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// When we submit the form
+form.addEventListener("submit", (event) => {
+  // We prevent the default behavior
+  event.preventDefault();
+});
