@@ -43,6 +43,14 @@ function validateField(name) {
   return false;
 }
 
+// Verify if an email match the RegExp pattern
+function validateEmail(email) {
+  let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+  if (!emailRegExp.test(email)) {
+    throw new Error("L'email n'est pas valide.");
+  }
+}
+
 // When we submit the form
 form.addEventListener("submit", (event) => {
   // We prevent the default behavior
@@ -56,7 +64,11 @@ form.addEventListener("submit", (event) => {
   const lastname = document.getElementById("last");
   const valueLastname = lastname.value;
 
-  // We call the validateField function
+  const email = document.getElementById("email");
+  const valueEmail = email.value;
+
+  // We call the validate functions
   validateField(valueFirstname);
   validateField(valueLastname);
+  validateEmail(valueEmail);
 });
