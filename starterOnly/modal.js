@@ -40,12 +40,14 @@ function validateField(name, zone) {
     "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
   // Create a span
   let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
 
   // Retrieve First element
   let FirstElement = document.getElementById("first");
   // Retrieve Last element
   let LastElement = document.getElementById("last");
-
+  // Retrieve Span element
+  let spanElement = document.getElementsByClassName("error-message");
   // Add text inside new element : span
   newElement.textContent = contentSpanFirst;
 
@@ -63,6 +65,7 @@ function validateField(name, zone) {
         return true;
     }
   }
+
   console.log("Plus de 2 lettres");
   return true;
 }
