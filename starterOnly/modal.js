@@ -54,7 +54,7 @@ function validateEmail(email) {
 
 // Verify if Number input is a number
 function validateNumber(n) {
-  if (isNaN(n)) {
+  if (isNaN(n) || n === "") {
     console.log("Is not a number");
     return false;
   }
