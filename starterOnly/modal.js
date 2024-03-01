@@ -115,10 +115,23 @@ function validateRadio(radioList) {
 
 // Verify if checkbox 1 is checked
 function validateCheckbox1(checkbox) {
+  // Define variable with text to display if an error happens
+  let contentSpanCheckbox =
+    "Vous devez vérifier que vous acceptez les termes et conditions.";
+  // Create a span
+  let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Add text inside new element : span
+  newElement.textContent = contentSpanCheckbox;
+
   if (checkbox.checked) {
     console.log("Checkbox is checked");
   } else {
     console.log("Checkbox is Unchecked");
+    // Retrieve Last CheckBox element
+    let CheckboxElement = document.getElementById("checkbox1");
+    // Add new element to Last parent element
+    CheckboxElement.parentNode.appendChild(newElement);
   }
 }
 
