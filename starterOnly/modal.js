@@ -73,8 +73,21 @@ function validateField(name, zone) {
 // Verify if an email match the RegExp pattern
 function validateEmail(email) {
   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+
+  // Define variable with text to display if an error happens
+  let contentSpanEmail = "Vous devez entrer un email valide.";
+  // Create a span
+  let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Add text inside new element : span
+  newElement.textContent = contentSpanEmail;
+
   if (!emailRegExp.test(email)) {
-    throw new Error("L'email n'est pas valide.");
+    // Retrieve Email element
+    let emailElement = document.getElementById("email");
+    // Add new element to Last parent element
+    emailElement.parentNode.appendChild(newElement);
+    // throw new Error("L'email n'est pas valide.");
   }
   console.log("Is an email");
 }
