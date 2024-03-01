@@ -81,9 +81,20 @@ function validateEmail(email) {
 
 // Verify if Number input is a number
 function validateNumber(n) {
+  // Define variable with text to display if an error happens
+  let contentSpanNumber = "Vous devez choisir un nombre.";
+  // Create a span
+  let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Add text inside new element : span
+  newElement.textContent = contentSpanNumber;
+
   if (isNaN(n) || n === "") {
     console.log("Is not a number");
-    return false;
+    // Retrieve Number element
+    let NumberElement = document.getElementById("quantity");
+    // Add new element to Last parent element
+    NumberElement.parentNode.appendChild(newElement);
   }
   console.log("Is a number");
   return true;
