@@ -76,6 +76,15 @@ function validateRadio(radioList) {
   }
 }
 
+// Verify if checkbox 1 is checked
+function validateCheckbox1(checkbox) {
+  if (checkbox.checked) {
+    console.log("Checkbox is checked");
+  } else {
+    console.log("Checkbox is Unchecked");
+  }
+}
+
 // When we submit the form
 form.addEventListener("submit", (event) => {
   // We prevent the default behavior
@@ -102,10 +111,14 @@ form.addEventListener("submit", (event) => {
     ".formData input[name='location']"
   );
 
+  // We retrieve Checkbox 1 id
+  const checkbox1 = document.getElementById("checkbox1");
+
   // We call the validate functions
   validateField(valueFirstname);
   validateField(valueLastname);
   validateEmail(valueEmail);
   validateNumber(valueQuantity);
   validateRadio(radioList);
+  validateCheckbox1(checkbox1);
 });
