@@ -49,6 +49,17 @@ function validateEmail(email) {
   if (!emailRegExp.test(email)) {
     throw new Error("L'email n'est pas valide.");
   }
+  console.log("Is an email");
+}
+
+// Verify if Number input is a number
+function validateNumber(n) {
+  if (isNaN(n)) {
+    console.log("Is not a number");
+    return false;
+  }
+  console.log("Is a number");
+  return false;
 }
 
 // When we submit the form
@@ -64,11 +75,17 @@ form.addEventListener("submit", (event) => {
   const lastname = document.getElementById("last");
   const valueLastname = lastname.value;
 
+  // We retrieve Email value
   const email = document.getElementById("email");
   const valueEmail = email.value;
+
+  // We retrieve Number value
+  const quantity = document.getElementById("quantity");
+  const valueQuantity = quantity.value;
 
   // We call the validate functions
   validateField(valueFirstname);
   validateField(valueLastname);
   validateEmail(valueEmail);
+  validateNumber(valueQuantity);
 });
