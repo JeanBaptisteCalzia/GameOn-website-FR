@@ -34,13 +34,37 @@ function closeModal() {
 }
 
 // Verify if fields has a minimum of 2 characters or are not empty
-function validateField(name) {
-  if (name.length >= 2) {
-    console.log("True");
-    return true;
+function validateField(name, zone) {
+  // Define variable with text to display if an error happens
+  let contentSpanFirst =
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+  // Create a span
+  let newElement = document.createElement("span");
+
+  // Retrieve First element
+  let FirstElement = document.getElementById("first");
+  // Retrieve Last element
+  let LastElement = document.getElementById("last");
+
+  // Add text inside new element : span
+  newElement.textContent = contentSpanFirst;
+
+  if (name.length < 2) {
+    switch (zone) {
+      case "first":
+        // Add new element to First parent element
+        FirstElement.parentNode.appendChild(newElement);
+        break;
+      case "last":
+        // Add new element to Last parent element
+        LastElement.parentNode.appendChild(newElement);
+        break;
+      default:
+        return true;
+    }
   }
-  console.log("False");
-  return false;
+  console.log("Plus de 2 lettres");
+  return true;
 }
 
 // Verify if an email match the RegExp pattern
@@ -115,8 +139,8 @@ form.addEventListener("submit", (event) => {
   const checkbox1 = document.getElementById("checkbox1");
 
   // We call the validate functions
-  validateField(valueFirstname);
-  validateField(valueLastname);
+  validateField(valueFirstname, "first");
+  validateField(valueLastname, "last");
   validateEmail(valueEmail);
   validateNumber(valueQuantity);
   validateRadio(radioList);
