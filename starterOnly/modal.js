@@ -59,7 +59,7 @@ function validateNumber(n) {
     return false;
   }
   console.log("Is a number");
-  return false;
+  return true;
 }
 
 // Verify if a radio input is checked
