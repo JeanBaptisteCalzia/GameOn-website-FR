@@ -62,6 +62,20 @@ function validateNumber(n) {
   return false;
 }
 
+// Verify if a radio input is checked
+function validateRadio(radioList) {
+  for (let i = 0; i < radioList.length; i++) {
+    if (radioList[i].checked) {
+      console.log("One radio is checked");
+      break;
+    } else {
+      console.log("Radio is not checked");
+    }
+
+    console.log(radioList.value);
+  }
+}
+
 // When we submit the form
 form.addEventListener("submit", (event) => {
   // We prevent the default behavior
@@ -83,9 +97,15 @@ form.addEventListener("submit", (event) => {
   const quantity = document.getElementById("quantity");
   const valueQuantity = quantity.value;
 
+  // We retrieve Radio btn
+  const radioList = document.querySelectorAll(
+    ".formData input[name='location']"
+  );
+
   // We call the validate functions
   validateField(valueFirstname);
   validateField(valueLastname);
   validateEmail(valueEmail);
   validateNumber(valueQuantity);
+  validateRadio(radioList);
 });
