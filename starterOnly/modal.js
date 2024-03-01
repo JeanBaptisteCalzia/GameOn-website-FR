@@ -91,15 +91,25 @@ function validateNumber(n) {
 
 // Verify if a radio input is checked
 function validateRadio(radioList) {
-  for (let i = 0; i < radioList.length; i++) {
-    if (radioList[i].checked) {
-      console.log("One radio is checked");
-      break;
-    } else {
-      console.log("Radio is not checked");
-    }
+  // Define variable with text to display if an error happens
+  let contentSpanRadio = "Vous devez choisir une option.";
+  // Create a span
+  let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Add text inside new element : span
+  newElement.textContent = contentSpanRadio;
 
-    console.log(radioList.value);
+  for (let i = 0; i < radioList.length; i++) {
+    // Retrieve Last Radio element
+    let RadioElement = document.getElementById("location6");
+
+    if (radioList[i].checked > 0) {
+      console.log("One radio is checked");
+    } else if (radioList[i].checked <= 0) {
+      console.log("All radio is not checked");
+      // Add new element to Last parent element
+      RadioElement.parentNode.appendChild(newElement);
+    }
   }
 }
 
