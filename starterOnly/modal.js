@@ -135,6 +135,24 @@ function validateCheckbox1(checkbox) {
   }
 }
 
+// Verify if date is empty
+function validateDate(date) {
+  // Define variable with text to display if an error happens
+  let contentSpanDate = "Vous devez entrer votre date de naissance.";
+  // Create a span
+  let newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Add text inside new element : span
+  newElement.textContent = contentSpanDate;
+  if (!date) {
+    console.log("empty");
+    // Retrieve Date element
+    let DateElement = document.getElementById("birthdate");
+    // Add new element to Last parent element
+    DateElement.parentNode.appendChild(newElement);
+  }
+}
+
 // When we submit the form
 form.addEventListener("submit", (event) => {
   // We prevent the default behavior
@@ -164,6 +182,10 @@ form.addEventListener("submit", (event) => {
   // We retrieve Checkbox 1 id
   const checkbox1 = document.getElementById("checkbox1");
 
+  // We retrieve Date id
+  const date = document.getElementById("birthdate");
+  const valueDate = date.value;
+
   // We call the validate functions
   validateField(valueFirstname, "first");
   validateField(valueLastname, "last");
@@ -171,4 +193,5 @@ form.addEventListener("submit", (event) => {
   validateNumber(valueQuantity);
   validateRadio(radioList);
   validateCheckbox1(checkbox1);
+  validateDate(valueDate);
 });
