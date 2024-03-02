@@ -34,10 +34,10 @@ function closeModal() {
 }
 
 // Verify if fields has a minimum of 2 characters or are not empty
-function validateField(name, zone) {
+function validateField(name, zone, label) {
   // Define variable with text to display if an error happens
   let contentSpanFirst =
-    "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    "Veuillez entrer 2 caractères ou plus pour le champ du " + label + ".";
   // Create a span
   let newElement = document.createElement("span");
   newElement.setAttribute("class", "error-message");
@@ -212,8 +212,8 @@ form.addEventListener("submit", (event) => {
   const valueDate = date.value;
 
   // We call the validate functions
-  validateField(valueFirstname, "first");
-  validateField(valueLastname, "last");
+  validateField(valueFirstname, "first", "prénom");
+  validateField(valueLastname, "last", "nom");
   validateEmail(valueEmail);
   validateNumber(valueQuantity);
   validateRadio(radioList);
