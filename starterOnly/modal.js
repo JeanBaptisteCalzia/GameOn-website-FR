@@ -122,18 +122,19 @@ function validateRadio(radioList) {
   newElement.setAttribute("class", "error-message");
   // Add text inside new element : span
   newElement.textContent = contentSpanRadio;
+  // Retrieve Last Radio element
+  let radioElement = document.getElementById("location6");
 
+  let radioValid = false;
   for (let i = 0; i < radioList.length; i++) {
-    // Retrieve Last Radio element
-    let RadioElement = document.getElementById("location6");
-
-    if (radioList[i].checked > 0) {
-      console.log("One radio is checked");
-    } else if (radioList[i].checked <= 0) {
-      console.log("All radio is not checked");
-      // Add new element to Last parent element
-      RadioElement.parentNode.appendChild(newElement);
+    if (radioList[i].checked) {
+      radioValid = true;
     }
+  }
+  if (radioValid === false) {
+    // Add new element to Last parent element
+    radioElement.parentNode.appendChild(newElement);
+    return radioValid;
   }
 }
 
