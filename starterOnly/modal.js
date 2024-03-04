@@ -169,6 +169,20 @@ function validateDate(date) {
   newElement.setAttribute("class", "error-message");
   // Add text inside new element : span
   newElement.textContent = contentSpanDate;
+
+  // The date you want to check
+  const inputDate = document.getElementById("birthdate").value;
+  const dateEntered = new Date(inputDate);
+  // Get the current date
+  const currentDate = new Date();
+
+  // Compare the input date with the current date
+  if (dateEntered < currentDate) {
+    console.log("The input date is in the past.");
+  } else {
+    console.log("The input date is in the future.");
+  }
+
   if (!date) {
     console.log("empty");
     // Retrieve Date element
