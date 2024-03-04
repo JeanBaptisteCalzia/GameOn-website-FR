@@ -76,6 +76,10 @@ img {
   margin: 0.5rem auto;
 }
 
+input:has(~ .error-message) {
+  border: 2px solid #ff4e60;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
