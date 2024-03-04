@@ -72,7 +72,9 @@ function validateField(name, zone, label) {
 
 // Verify if an email match the RegExp pattern
 function validateEmail(email) {
-  let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+  let emailRegExp = new RegExp(
+    "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+"
+  );
 
   // Define variable with text to display if an error happens
   let contentSpanEmail = "Vous devez entrer un email valide.";
