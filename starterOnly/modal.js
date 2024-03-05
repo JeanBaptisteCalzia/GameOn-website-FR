@@ -144,10 +144,7 @@ function validateCheckbox1(checkbox) {
   newElement.setAttribute("class", "error-message");
   // Add text inside new element : span
   newElement.textContent = contentSpanCheckbox;
-
-  if (checkbox.checked) {
-    console.log("Checkbox is checked");
-  } else {
+  if (!checkbox.checked) {
     console.log("Checkbox is Unchecked");
     // Retrieve Last CheckBox element
     let CheckboxElement = document.getElementById("checkbox1");
