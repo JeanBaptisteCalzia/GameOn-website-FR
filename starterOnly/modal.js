@@ -249,7 +249,7 @@ form.addEventListener("submit", (event) => {
     validateCheckbox1(checkbox1)
   ) {
     // Define variables with text to display when form is validate
-    const contentSuccessMessage = "Merci pour votre inscription !";
+    const contentSuccessMessage = "Merci pour<br>votre inscription !";
     const contentSuccessBtn = "Fermer";
     // Create h1 and btn
     const newElement = document.createElement("h1");
@@ -259,7 +259,7 @@ form.addEventListener("submit", (event) => {
     const modalBody = document.querySelector(".modal-body");
 
     // Add text inside new element (h1) and new button
-    newElement.textContent = contentSuccessMessage;
+    newElement.innerHTML = contentSuccessMessage;
     newBtn.textContent = contentSuccessBtn;
     newBtn.setAttribute("class", "btn-close");
     modalBody.setAttribute("class", "modal-body modal-body--open");
