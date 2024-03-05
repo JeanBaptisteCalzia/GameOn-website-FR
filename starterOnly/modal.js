@@ -256,19 +256,22 @@ form.addEventListener("submit", (event) => {
     validateRadio(radioList) &&
     validateCheckbox1(checkbox1)
   ) {
-    // Define variable with text to display form is validate
+    // Define variables with text to display when form is validate
     const contentSuccessMessage = "Merci pour votre inscription !";
     const contentSuccessBtn = "Fermer";
+    // Create h1 and btn
     const newElement = document.createElement("h1");
     const newBtn = document.createElement("button");
+    // Retrieve form content
     const modalFormBody = document.querySelector("form");
     const modalBody = document.querySelector(".modal-body");
-    // Add text inside new element : h1
+
+    // Add text inside new element (h1) and new button
     newElement.textContent = contentSuccessMessage;
     newBtn.textContent = contentSuccessBtn;
     newBtn.setAttribute("class", "btn-close");
     modalBody.setAttribute("class", "modal-body modal-body--open");
-
+    // Remove form elements
     modalFormBody.remove(modalFormBody);
     // Add new element to modal content
     modalBody.appendChild(newElement);
