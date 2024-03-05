@@ -138,8 +138,9 @@ function validateRadio(radioList) {
   if (radioValid === false) {
     // Add new element to Last parent element
     radioElement.parentNode.appendChild(newElement);
-    return radioValid;
+    radioValid = false;
   }
+  return true;
 }
 
 // Verify if checkbox 1 is checked
