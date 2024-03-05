@@ -184,6 +184,14 @@ form.addEventListener("submit", (event) => {
   // We prevent the default behavior
   event.preventDefault();
 
+  // We retrieve Error messages
+  const errorMessage = document.getElementsByClassName("error-message");
+
+  // We delete error messages
+  for (const [key, message] of Object.entries(errorMessage)) {
+    message.remove(errorMessage);
+  }
+
   // We retrieve Firstname value
   const firstname = document.getElementById("first");
   const valueFirstname = firstname.value;
