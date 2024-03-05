@@ -202,6 +202,36 @@ main {
   margin: 15px auto;
 }
 
+.modal-body h1 {
+  font-weight: 300;
+  font-size: 36px;
+  text-align: center;
+  font-family: var(--font-default);
+}
+
+.modal-body--open {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 220px);
+  width: 90%;
+}
+
+.modal-body--open h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-body--open button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -336,7 +366,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -346,6 +377,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.bground .btn-close {
+  margin: 0 auto;
 }
 /* custom select styles */
 .custom-select {
@@ -524,6 +559,32 @@ footer {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
+  }
+  .content {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content .modal-body--open {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 40px);
+    width: 85%;
+  }
+
+  .content .modal-body--open h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .content .modal-body--open button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .copyrights {
     margin-top: 50px;

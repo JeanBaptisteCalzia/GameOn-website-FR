@@ -14,6 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const modalContent = document.querySelector(".content");
 const form = document.querySelector("form");
+const modalInsideCloseBtn = document.querySelector(".btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -21,7 +22,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // Close modal event
 document.addEventListener("click", (event) => {
   const isOutside = event.target;
-  if (isOutside === modalbg || isOutside === modalCloseBtn) {
+  if (
+    isOutside === modalbg ||
+    isOutside === modalCloseBtn ||
+    isOutside === modalInsideCloseBtn
+  ) {
     closeModal();
   }
 });
@@ -53,8 +58,6 @@ function validateField(name, zone, label) {
     // Add new element to Last parent element
     elements.parentNode.appendChild(newElement);
   }
-
-  console.log("Plus de 2 lettres");
   return true;
 }
 
@@ -79,7 +82,7 @@ function validateEmail(email) {
     emailElement.parentNode.appendChild(newElement);
     // throw new Error("L'email n'est pas valide.");
   }
-  console.log("Is an email");
+  return true;
 }
 
 // Verify if Number input is a number
@@ -93,12 +96,13 @@ function validateNumber(n) {
   newElement.textContent = contentSpanNumber;
 
   if (isNaN(n) || n === "") {
-    console.log("Is not a number");
     // Retrieve Number element
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
-  } else if (n < 0) {
+  }
+
+  if (n < 0) {
     // Define variable with text to display if an error happens
     let contentSpanNegativeNumber = "Vous devez choisir un nombre valide";
     // Add text inside new element : span
@@ -108,7 +112,6 @@ function validateNumber(n) {
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
   }
-  console.log("Is a number");
   return true;
 }
 
@@ -125,11 +128,13 @@ function validateRadio(radioList) {
   let radioElement = document.getElementById("location6");
 
   let radioValid = false;
+
   for (let i = 0; i < radioList.length; i++) {
     if (radioList[i].checked) {
       radioValid = true;
     }
   }
+
   if (radioValid === false) {
     // Add new element to Last parent element
     radioElement.parentNode.appendChild(newElement);
@@ -149,12 +154,13 @@ function validateCheckbox1(checkbox) {
   newElement.textContent = contentSpanCheckbox;
 
   if (!checkbox.checked) {
-    console.log("Checkbox is Unchecked");
     // Retrieve Last CheckBox element
     let CheckboxElement = document.getElementById("checkbox1");
     // Add new element to Last parent element
     CheckboxElement.parentNode.appendChild(newElement);
+    return false;
   }
+  return true;
 }
 
 // Verify if date is empty
@@ -177,7 +183,6 @@ function validateDate(date) {
 
   // Compare the input date with the current date
   if (dateEntered >= currentDate) {
-    console.log("The input date is in the future.");
     // Add text inside new element : span future
     newElement.textContent = contentSpanDateFuture;
     // Retrieve Date element
@@ -187,12 +192,12 @@ function validateDate(date) {
   }
 
   if (!date) {
-    console.log("empty");
     // Retrieve Date element
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
   }
+  return true;
 }
 
 // When we submit the form
@@ -202,10 +207,15 @@ form.addEventListener("submit", (event) => {
 
   // We retrieve Error messages
   const errorMessage = document.getElementsByClassName("error-message");
+  const successMessage = document.querySelector("h1");
 
   // We delete error messages
   for (const [key, message] of Object.entries(errorMessage)) {
     message.remove(errorMessage);
+  }
+  // We delete success messages
+  for (const [key, h1] of Object.entries(successMessage)) {
+    h1.remove(successMessage);
   }
 
   // We retrieve Firstname value
@@ -236,12 +246,43 @@ form.addEventListener("submit", (event) => {
   const date = document.getElementById("birthdate");
   const valueDate = date.value;
 
-  // We call the validate functions
-  validateField(valueFirstname, "first", "prénom");
-  validateField(valueLastname, "last", "nom");
-  validateEmail(valueEmail);
-  validateNumber(valueQuantity);
-  validateRadio(radioList);
-  validateCheckbox1(checkbox1);
-  validateDate(valueDate);
+  if (
+    // We call the validate functions
+    validateField(valueFirstname, "first", "prénom") &&
+    validateField(valueLastname, "last", "nom") &&
+    validateEmail(valueEmail) &&
+    validateDate(valueDate) &&
+    validateNumber(valueQuantity) &&
+    validateRadio(radioList) &&
+    validateCheckbox1(checkbox1)
+  ) {
+    // Define variable with text to display form is validate
+    const contentSuccessMessage = "Merci pour votre inscription !";
+    const contentSuccessBtn = "Fermer";
+    const newElement = document.createElement("h1");
+    const newBtn = document.createElement("button");
+    const modalFormBody = document.querySelector("form");
+    const modalBody = document.querySelector(".modal-body");
+    // Add text inside new element : h1
+    newElement.textContent = contentSuccessMessage;
+    newBtn.textContent = contentSuccessBtn;
+    newBtn.setAttribute("class", "btn-close");
+    modalBody.setAttribute("class", "modal-body modal-body--open");
+
+    modalFormBody.remove(modalFormBody);
+    // Add new element to modal content
+    modalBody.appendChild(newElement);
+    modalBody.appendChild(newBtn);
+
+    console.log(valueFirstname);
+    console.log(valueLastname);
+    console.log(valueEmail);
+    console.log(valueDate);
+    console.log(valueQuantity);
+    console.log(radioList);
+    console.log(checkbox1);
+    console.log("Sucess");
+  } else {
+    console.log("Form contains error");
+  }
 });
