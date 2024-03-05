@@ -41,29 +41,14 @@ function validateField(name, zone, label) {
   // Create a span
   let newElement = document.createElement("span");
   newElement.setAttribute("class", "error-message");
-
   // Retrieve First element
-  let FirstElement = document.getElementById("first");
-  // Retrieve Last element
-  let LastElement = document.getElementById("last");
-  // Retrieve Span element
-  let spanElement = document.getElementsByClassName("error-message");
+  let elements = document.getElementById(zone);
   // Add text inside new element : span
   newElement.textContent = contentSpanFirst;
 
   if (name.length < 2) {
-    switch (zone) {
-      case "first":
-        // Add new element to First parent element
-        FirstElement.parentNode.appendChild(newElement);
-        break;
-      case "last":
-        // Add new element to Last parent element
-        LastElement.parentNode.appendChild(newElement);
-        break;
-      default:
-        return true;
-    }
+    // Add new element to Last parent element
+    elements.parentNode.appendChild(newElement);
   }
 
   console.log("Plus de 2 lettres");
