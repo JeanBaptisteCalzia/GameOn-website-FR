@@ -14,7 +14,6 @@ const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const modalContent = document.querySelector(".content");
 const form = document.querySelector("form");
-const modalInsideCloseBtn = document.querySelector(".btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
