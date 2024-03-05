@@ -58,7 +58,7 @@ function validateField(name, zone, label) {
 // Verify if an email match the RegExp pattern
 function validateEmail(email) {
   let emailRegExp = new RegExp(
-    "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]+"
+    "[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z]{2,3}"
   );
 
   // Define variable with text to display if an error happens
@@ -144,6 +144,7 @@ function validateCheckbox1(checkbox) {
   newElement.setAttribute("class", "error-message");
   // Add text inside new element : span
   newElement.textContent = contentSpanCheckbox;
+
   if (!checkbox.checked) {
     console.log("Checkbox is Unchecked");
     // Retrieve Last CheckBox element
