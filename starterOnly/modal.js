@@ -19,8 +19,11 @@ const form = document.querySelector("form");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close modal event
-modalCloseBtn.addEventListener("click", () => {
-  closeModal();
+document.addEventListener("click", (event) => {
+  const isOutside = event.target;
+  if (isOutside === modalbg || isOutside === modalCloseBtn) {
+    closeModal();
+  }
 });
 
 // launch modal form
