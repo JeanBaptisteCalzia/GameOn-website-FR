@@ -164,6 +164,8 @@ function validateDate(date) {
   // Create a span
   let newElement = document.createElement("span");
   newElement.setAttribute("class", "error-message");
+  // Define variable with text to display if an error happens in the future
+  let contentSpanDateFuture = "Vous devez entrer une date de naissance valide.";
   // Add text inside new element : span
   newElement.textContent = contentSpanDate;
 
@@ -174,10 +176,14 @@ function validateDate(date) {
   const currentDate = new Date();
 
   // Compare the input date with the current date
-  if (dateEntered < currentDate) {
-    console.log("The input date is in the past.");
-  } else {
+  if (dateEntered >= currentDate) {
     console.log("The input date is in the future.");
+    // Add text inside new element : span future
+    newElement.textContent = contentSpanDateFuture;
+    // Retrieve Date element
+    let DateElement = document.getElementById("birthdate");
+    // Add new element to Last parent element
+    DateElement.parentNode.appendChild(newElement);
   }
 
   if (!date) {
