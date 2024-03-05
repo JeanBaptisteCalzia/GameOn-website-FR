@@ -22,11 +22,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // Close modal event
 document.addEventListener("click", (event) => {
   const isOutside = event.target;
-  if (
-    isOutside === modalbg ||
-    isOutside === modalCloseBtn ||
-    isOutside === modalInsideCloseBtn
-  ) {
+  if (isOutside === modalbg || isOutside === modalCloseBtn) {
     closeModal();
   }
 });
@@ -267,6 +263,7 @@ form.addEventListener("submit", (event) => {
     newBtn.textContent = contentSuccessBtn;
     newBtn.setAttribute("class", "btn-close");
     modalBody.setAttribute("class", "modal-body modal-body--open");
+    modalBody.setAttribute("onclick", "window.location.reload();");
     // Remove form elements
     modalFormBody.remove(modalFormBody);
     // Add new element to modal content
