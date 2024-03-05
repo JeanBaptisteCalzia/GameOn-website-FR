@@ -95,6 +95,15 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
+  } else if (n < 0) {
+    // Define variable with text to display if an error happens
+    let contentSpanNegativeNumber = "Vous devez choisir un nombre valide";
+    // Add text inside new element : span
+    newElement.textContent = contentSpanNegativeNumber;
+    // Retrieve Number element
+    let NumberElement = document.getElementById("quantity");
+    // Add new element to Last parent element
+    NumberElement.parentNode.appendChild(newElement);
   }
   console.log("Is a number");
   return true;
