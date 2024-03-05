@@ -208,15 +208,10 @@ form.addEventListener("submit", (event) => {
 
   // We retrieve Error messages
   const errorMessage = document.getElementsByClassName("error-message");
-  const successMessage = document.querySelector("h1");
 
   // We delete error messages
   for (const [key, message] of Object.entries(errorMessage)) {
     message.remove(errorMessage);
-  }
-  // We delete success messages
-  for (const [key, h1] of Object.entries(successMessage)) {
-    h1.remove(successMessage);
   }
 
   // We retrieve Firstname value
