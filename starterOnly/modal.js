@@ -52,12 +52,9 @@ function validateField(name, zone, label) {
   if (name.length < 2) {
     // Add new element to Last parent element
     elements.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
-
-  valid = true;
-  return valid;
+  return true;
 }
 
 // Verify if an email match the RegExp pattern
@@ -80,11 +77,9 @@ function validateEmail(email) {
     // Add new element to Last parent element
     emailElement.parentNode.appendChild(newElement);
     // throw new Error("L'email n'est pas valide.");
-    valid = false;
-    return valid;
+    return false;
   }
-  valid = true;
-  return valid;
+  return true;
 }
 
 // Verify if Number input is a number
@@ -102,8 +97,7 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
 
   if (n < 0) {
@@ -115,11 +109,9 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
-  valid = true;
-  return valid;
+  return true;
 }
 
 // Verify if a radio input is checked
@@ -146,11 +138,9 @@ function validateRadio(radioList) {
     // Add new element to Last parent element
     radioElement.parentNode.appendChild(newElement);
     radioValid = false;
-    valid = false;
-    return valid;
+    return false;
   }
-  valid = true;
-  return valid;
+  return true;
 }
 
 // Verify if checkbox 1 is checked
@@ -169,11 +159,9 @@ function validateCheckbox1(checkbox) {
     let CheckboxElement = document.getElementById("checkbox1");
     // Add new element to Last parent element
     CheckboxElement.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
-  valid = true;
-  return valid;
+  return true;
 }
 
 // Verify if date is empty
@@ -202,8 +190,7 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
 
   if (!date) {
@@ -211,11 +198,9 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
-    valid = false;
-    return valid;
+    return false;
   }
-  valid = true;
-  return valid;
+  return true;
 }
 
 // When we submit the form
