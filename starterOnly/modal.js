@@ -52,8 +52,12 @@ function validateField(name, zone, label) {
   if (name.length < 2) {
     // Add new element to Last parent element
     elements.parentNode.appendChild(newElement);
+    valid = false;
+    return valid;
   }
-  return true;
+
+  valid = true;
+  return valid;
 }
 
 // Verify if an email match the RegExp pattern
@@ -76,8 +80,11 @@ function validateEmail(email) {
     // Add new element to Last parent element
     emailElement.parentNode.appendChild(newElement);
     // throw new Error("L'email n'est pas valide.");
+    valid = false;
+    return valid;
   }
-  return true;
+  valid = true;
+  return valid;
 }
 
 // Verify if Number input is a number
@@ -95,6 +102,8 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
+    valid = false;
+    return valid;
   }
 
   if (n < 0) {
@@ -106,8 +115,11 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
+    valid = false;
+    return valid;
   }
-  return true;
+  valid = true;
+  return valid;
 }
 
 // Verify if a radio input is checked
@@ -134,8 +146,11 @@ function validateRadio(radioList) {
     // Add new element to Last parent element
     radioElement.parentNode.appendChild(newElement);
     radioValid = false;
+    valid = false;
+    return valid;
   }
-  return true;
+  valid = true;
+  return valid;
 }
 
 // Verify if checkbox 1 is checked
@@ -154,9 +169,11 @@ function validateCheckbox1(checkbox) {
     let CheckboxElement = document.getElementById("checkbox1");
     // Add new element to Last parent element
     CheckboxElement.parentNode.appendChild(newElement);
-    return false;
+    valid = false;
+    return valid;
   }
-  return true;
+  valid = true;
+  return valid;
 }
 
 // Verify if date is empty
@@ -185,6 +202,8 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
+    valid = false;
+    return valid;
   }
 
   if (!date) {
@@ -192,8 +211,11 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
+    valid = false;
+    return valid;
   }
-  return true;
+  valid = true;
+  return valid;
 }
 
 // When we submit the form
@@ -237,15 +259,23 @@ form.addEventListener("submit", (event) => {
   const date = document.getElementById("birthdate");
   const valueDate = date.value;
 
+  // We call the validate functions
+  const validFirst = validateField(valueFirstname, "first", "prénom");
+  const validLast = validateField(valueLastname, "last", "nom");
+  const validEmail = validateEmail(valueEmail);
+  const validDate = validateDate(valueDate);
+  const validQuantity = validateNumber(valueQuantity);
+  const validRadiolist = validateRadio(radioList);
+  const validChecbox = validateCheckbox1(checkbox1);
+
   if (
-    // We call the validate functions
-    validateField(valueFirstname, "first", "prénom") &&
-    validateField(valueLastname, "last", "nom") &&
-    validateEmail(valueEmail) &&
-    validateDate(valueDate) &&
-    validateNumber(valueQuantity) &&
-    validateRadio(radioList) &&
-    validateCheckbox1(checkbox1)
+    validFirst === true &&
+    validLast === true &&
+    validEmail === true &&
+    validDate === true &&
+    validQuantity === true &&
+    validRadiolist === true &&
+    validChecbox === true
   ) {
     // Define variables with text to display when form is validate
     const contentSuccessMessage = "Merci pour<br>votre inscription !";
