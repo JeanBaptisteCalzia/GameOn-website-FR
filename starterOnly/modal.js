@@ -275,9 +275,11 @@ form.addEventListener("submit", (event) => {
     // Add text inside new element (h1) and new button
     newElement.innerHTML = contentSuccessMessage;
     newBtn.textContent = contentSuccessBtn;
+    // Set attribute on Btn and modal
     newBtn.setAttribute("class", "btn-close");
     modalBody.setAttribute("class", "modal-body modal-body--open");
-    modalBody.setAttribute("onclick", "window.location.reload();");
+    // Set attribute on Success Modal Btn in order to reload page on click
+    modalBody.setAttribute("onclick", "location.reload(true);");
     // Remove form elements
     modalFormBody.remove(modalFormBody);
     // Add new element to modal content
