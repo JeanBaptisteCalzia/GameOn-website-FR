@@ -52,6 +52,7 @@ function validateField(name, zone, label) {
   if (name.length < 2) {
     // Add new element to Last parent element
     elements.parentNode.appendChild(newElement);
+    elements.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
   return true;
@@ -76,6 +77,7 @@ function validateEmail(email) {
     let emailElement = document.getElementById("email");
     // Add new element to Last parent element
     emailElement.parentNode.appendChild(newElement);
+    emailElement.parentNode.setAttribute("class", "formData error-message");
     // throw new Error("L'email n'est pas valide.");
     return false;
   }
@@ -97,6 +99,7 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
+    NumberElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
 
@@ -109,6 +112,7 @@ function validateNumber(n) {
     let NumberElement = document.getElementById("quantity");
     // Add new element to Last parent element
     NumberElement.parentNode.appendChild(newElement);
+    NumberElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
   return true;
@@ -137,6 +141,7 @@ function validateRadio(radioList) {
   if (radioValid === false) {
     // Add new element to Last parent element
     radioElement.parentNode.appendChild(newElement);
+    radioElement.parentNode.setAttribute("class", "formData error-message");
     radioValid = false;
     return false;
   }
@@ -159,6 +164,7 @@ function validateCheckbox1(checkbox) {
     let CheckboxElement = document.getElementById("checkbox1");
     // Add new element to Last parent element
     CheckboxElement.parentNode.appendChild(newElement);
+    CheckboxElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
   return true;
@@ -190,6 +196,7 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
+    DateElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
 
@@ -198,6 +205,7 @@ function validateDate(date) {
     let DateElement = document.getElementById("birthdate");
     // Add new element to Last parent element
     DateElement.parentNode.appendChild(newElement);
+    DateElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
   return true;
@@ -210,11 +218,16 @@ function validate(event) {
   event.preventDefault();
 
   // We retrieve Error messages
-  const errorMessage = document.getElementsByClassName("error-message");
+  const errorMessage = document.querySelectorAll("span.error-message");
 
   // We delete error messages
   for (const [key, message] of Object.entries(errorMessage)) {
     message.remove(errorMessage);
+  }
+
+  // We delete error messages classes of FormData elements
+  for (const [key, classError] of Object.entries(formData)) {
+    classError.setAttribute("class", "formData");
   }
 
   // We retrieve Firstname value
