@@ -204,7 +204,8 @@ function validateDate(date) {
 }
 
 // When we submit the form
-form.addEventListener("submit", (event) => {
+function validate(event) {
+  // form.addEventListener("submit", (event) => {
   // We prevent the default behavior
   event.preventDefault();
 
@@ -297,4 +298,9 @@ form.addEventListener("submit", (event) => {
   } else {
     console.log("Form contains error");
   }
-});
+}
+
+function init() {
+  form.onsubmit = validate;
+}
+window.onload = init;
