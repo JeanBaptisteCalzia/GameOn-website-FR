@@ -61,8 +61,10 @@ function validateField(name, zone, label) {
 function validateEmail(email) {
   // prettier-ignore
   const emailRegExp = new RegExp(
-    /[a-zA-Z0-9._-]+@([a-zA-Z0-9_-]+\.){1,3}[a-zA-Z]{2,3}/g
+    /^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$/
   );
+
+  console.log(emailRegExp.test(email));
 
   if (!emailRegExp.test(email)) {
     // Define variable with text to display if an error happens
