@@ -60,8 +60,9 @@ function validateField(name, zone, label) {
 
 // Verify if an email match the RegExp pattern
 function validateEmail(email) {
+  // prettier-ignore
   let emailRegExp = new RegExp(
-    "[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+\\.[a-zA-Z]{2,3}"
+    /[a-zA-Z0-9._-]+@([a-zA-Z0-9_-]+\.){1,3}[a-zA-Z]{2,3}/
   );
 
   // Define variable with text to display if an error happens
