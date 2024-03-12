@@ -64,8 +64,6 @@ function validateEmail(email) {
     /^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$/
   );
 
-  console.log(emailRegExp.test(email));
-
   if (!emailRegExp.test(email)) {
     // Define variable with text to display if an error happens
     const contentSpanEmail = "Vous devez entrer un email valide.";
