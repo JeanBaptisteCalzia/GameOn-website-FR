@@ -62,7 +62,7 @@ function validateField(name, zone, label) {
 function validateEmail(email) {
   // prettier-ignore
   let emailRegExp = new RegExp(
-    /[a-zA-Z0-9._-]+@([a-zA-Z0-9_-]+\.){1,3}[a-zA-Z]{2,3}/
+    /[a-zA-Z0-9._-]+@([a-zA-Z0-9_-]+\.){1,3}[a-zA-Z]{2,3}/g
   );
 
   // Define variable with text to display if an error happens
@@ -214,7 +214,6 @@ function validateDate(date) {
 
 // When we submit the form
 function validate(event) {
-  // form.addEventListener("submit", (event) => {
   // We prevent the default behavior
   event.preventDefault();
 
@@ -314,7 +313,4 @@ function validate(event) {
   }
 }
 
-function init() {
-  form.onsubmit = validate;
-}
-window.onload = init;
+form.onsubmit = validate;
