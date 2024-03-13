@@ -42,15 +42,16 @@ function validateField(name, zone, label) {
     // Define variable with text to display if an error happens
     const contentSpanFirst =
       "Veuillez entrer 2 caractères ou plus pour le champ du " + label + ".";
-    // Create a span
+    // Create a span with error-message class
     const newElement = document.createElement("span");
     newElement.setAttribute("class", "error-message");
-    // Retrieve First element
+    // Retrieve First or Last element
     const elements = document.getElementById(zone);
     // Add text inside new element : span
     newElement.textContent = contentSpanFirst;
-    // Add new element to Last parent element
+    // Add new elements
     elements.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     elements.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -67,17 +68,17 @@ function validateEmail(email) {
   if (!emailRegExp.test(email)) {
     // Define variable with text to display if an error happens
     const contentSpanEmail = "Vous devez entrer un email valide.";
-    // Create a span
+    // Create a span with error-message class
     const newElement = document.createElement("span");
     newElement.setAttribute("class", "error-message");
     // Add text inside new element : span
     newElement.textContent = contentSpanEmail;
     // Retrieve Email element
     const emailElement = document.getElementById("email");
-    // Add new element to Last parent element
+    // Add new element
     emailElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     emailElement.parentNode.setAttribute("class", "formData error-message");
-    // throw new Error("L'email n'est pas valide.");
     return false;
   }
   return true;
@@ -87,7 +88,7 @@ function validateEmail(email) {
 function validateNumber(n) {
   // Define variable with text to display if an error happens
   const contentSpanNumber = "Vous devez choisir un nombre.";
-  // Create a span
+  // Create a span with error-message class
   const newElement = document.createElement("span");
   newElement.setAttribute("class", "error-message");
   // Add text inside new element : span
@@ -96,8 +97,9 @@ function validateNumber(n) {
   if (isNaN(n) || n === "") {
     // Retrieve Number element
     const NumberElement = document.getElementById("quantity");
-    // Add new element to Last parent element
+    // Add new element
     NumberElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     NumberElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -109,8 +111,9 @@ function validateNumber(n) {
     newElement.textContent = contentSpanNegativeNumber;
     // Retrieve Number element
     const NumberElement = document.getElementById("quantity");
-    // Add new element to Last parent element
+    // Add new element
     NumberElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     NumberElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -130,16 +133,16 @@ function validateRadio(radioList) {
   if (radioValid === false) {
     // Define variable with text to display if an error happens
     const contentSpanRadio = "Vous devez choisir une option.";
-    // Create a span
+    // Create a span with error-message class
     const newElement = document.createElement("span");
     newElement.setAttribute("class", "error-message");
     // Add text inside new element : span
     newElement.textContent = contentSpanRadio;
     // Retrieve Last Radio element
     const radioElement = document.getElementById("location6");
-
-    // Add new element to Last parent element
+    // Add new element
     radioElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     radioElement.parentNode.setAttribute("class", "formData error-message");
     radioValid = false;
     return false;
@@ -153,15 +156,16 @@ function validateCheckbox1(checkbox) {
     // Define variable with text to display if an error happens
     const contentSpanCheckbox =
       "Vous devez vérifier que vous acceptez les termes et conditions.";
-    // Create a span
+    // Create a span with error-message class
     const newElement = document.createElement("span");
     newElement.setAttribute("class", "error-message");
     // Add text inside new element : span
     newElement.textContent = contentSpanCheckbox;
     // Retrieve Last CheckBox element
     const CheckboxElement = document.getElementById("checkbox1");
-    // Add new element to Last parent element
+    // Add new element
     CheckboxElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     CheckboxElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -172,7 +176,7 @@ function validateCheckbox1(checkbox) {
 function validateDate(date) {
   // Define variable with text to display if an error happens
   const contentSpanDate = "Vous devez entrer votre date de naissance.";
-  // Create a span
+  // Create a span with error-message class
   const newElement = document.createElement("span");
   newElement.setAttribute("class", "error-message");
   // Define variable with text to display if an error happens in the future
@@ -193,8 +197,9 @@ function validateDate(date) {
     newElement.textContent = contentSpanDateFuture;
     // Retrieve Date element
     const DateElement = document.getElementById("birthdate");
-    // Add new element to Last parent element
+    // Add new element
     DateElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     DateElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -202,8 +207,9 @@ function validateDate(date) {
   if (!date) {
     // Retrieve Date element
     const DateElement = document.getElementById("birthdate");
-    // Add new element to Last parent element
+    // Add new element
     DateElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
     DateElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
@@ -218,7 +224,7 @@ function validate(event) {
   // We retrieve Error messages
   const errorMessage = document.querySelectorAll("span.error-message");
 
-  // We delete error messages
+  // We delete error messages (span)
   for (const [key, message] of Object.entries(errorMessage)) {
     message.remove(errorMessage);
   }
@@ -249,7 +255,7 @@ function validate(event) {
     ".formData input[name='location']"
   );
 
-  // We retrieve Checkbox 1 id
+  // We retrieve Checkbox1 id
   const checkbox1 = document.getElementById("checkbox1");
 
   // We retrieve Date value
