@@ -84,6 +84,50 @@ function validateEmail(email) {
   return true;
 }
 
+// Verify if date is empty
+function validateDate(date) {
+  // Define variable with text to display if an error happens
+  const contentSpanDate = "Vous devez entrer votre date de naissance.";
+  // Create a span with error-message class
+  const newElement = document.createElement("span");
+  newElement.setAttribute("class", "error-message");
+  // Define variable with text to display if an error happens in the future
+  const contentSpanDateFuture =
+    "Vous devez entrer une date de naissance valide.";
+  // Add text inside new element : span
+  newElement.textContent = contentSpanDate;
+
+  // The date you want to check
+  const inputDate = document.getElementById("birthdate").value;
+  const dateEntered = new Date(inputDate);
+  // Get the current date
+  const currentDate = new Date();
+
+  // Compare the input date with the current date
+  if (dateEntered >= currentDate) {
+    // Add text inside new element : span future
+    newElement.textContent = contentSpanDateFuture;
+    // Retrieve Date element
+    const DateElement = document.getElementById("birthdate");
+    // Add new element
+    DateElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
+    DateElement.parentNode.setAttribute("class", "formData error-message");
+    return false;
+  }
+
+  if (!date) {
+    // Retrieve Date element
+    const DateElement = document.getElementById("birthdate");
+    // Add new element
+    DateElement.parentNode.appendChild(newElement);
+    // Add new error-message class to parent element
+    DateElement.parentNode.setAttribute("class", "formData error-message");
+    return false;
+  }
+  return true;
+}
+
 // Verify if Number input is a number
 function validateNumber(n) {
   // Define variable with text to display if an error happens
@@ -167,50 +211,6 @@ function validateCheckbox1(checkbox) {
     CheckboxElement.parentNode.appendChild(newElement);
     // Add new error-message class to parent element
     CheckboxElement.parentNode.setAttribute("class", "formData error-message");
-    return false;
-  }
-  return true;
-}
-
-// Verify if date is empty
-function validateDate(date) {
-  // Define variable with text to display if an error happens
-  const contentSpanDate = "Vous devez entrer votre date de naissance.";
-  // Create a span with error-message class
-  const newElement = document.createElement("span");
-  newElement.setAttribute("class", "error-message");
-  // Define variable with text to display if an error happens in the future
-  const contentSpanDateFuture =
-    "Vous devez entrer une date de naissance valide.";
-  // Add text inside new element : span
-  newElement.textContent = contentSpanDate;
-
-  // The date you want to check
-  const inputDate = document.getElementById("birthdate").value;
-  const dateEntered = new Date(inputDate);
-  // Get the current date
-  const currentDate = new Date();
-
-  // Compare the input date with the current date
-  if (dateEntered >= currentDate) {
-    // Add text inside new element : span future
-    newElement.textContent = contentSpanDateFuture;
-    // Retrieve Date element
-    const DateElement = document.getElementById("birthdate");
-    // Add new element
-    DateElement.parentNode.appendChild(newElement);
-    // Add new error-message class to parent element
-    DateElement.parentNode.setAttribute("class", "formData error-message");
-    return false;
-  }
-
-  if (!date) {
-    // Retrieve Date element
-    const DateElement = document.getElementById("birthdate");
-    // Add new element
-    DateElement.parentNode.appendChild(newElement);
-    // Add new error-message class to parent element
-    DateElement.parentNode.setAttribute("class", "formData error-message");
     return false;
   }
   return true;
