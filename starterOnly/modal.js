@@ -297,7 +297,7 @@ function validate(event) {
     newBtn.setAttribute("class", "btn-close");
     modalBody.setAttribute("class", "modal-body modal-body--open");
     // Set attribute on Success Modal Btn in order to reload page on click
-    modalBody.setAttribute("onclick", "location.reload(true);");
+    newBtn.setAttribute("onclick", "location.reload(true);");
     // Remove form elements
     modalFormBody.remove(modalFormBody);
     // Add new element to modal content
